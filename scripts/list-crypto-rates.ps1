@@ -1,4 +1,5 @@
-function ListCryptoRate { param([string]$Symbol, [string]$Name)
+function ListCryptoRate { 
+    param([string]$Symbol, [string]$Name)
 	$Rates = (Invoke-WebRequest -URI "https://min-api.cryptocompare.com/data/price?fsym=$Symbol&tsyms=USD,EUR,RUB,CNY" -userAgent "curl" -useBasicParsing).Content | ConvertFrom-Json
 	New-Object PSObject -property @{ 'Cryptocurrency' = "1 $Name ($Symbol) ="; 'USD' = "$($Rates.USD)"; 'EUR' = "$($Rates.EUR)"; 'RUB' = "$($Rates.RUB)"; 'CNY' = "$($Rates.CNY)" }
 }
@@ -32,8 +33,8 @@ function ListCryptoRates {
 try {
 	ListCryptoRates | Format-Table -property @{e='Cryptocurrency';width=28},USD,EUR,RUB,CNY
 	Write-Host "(by cryptocompare.com, Crypto is volatile and unregulated. Capital at risk. Taxes may apply)"
-	exit 0 # success
+	Read-Host -Prompt "Press Enter to close"
 } catch {
 	"⚠️ Error in line $($_.InvocationInfo.ScriptLineNumber): $($Error[0])"
-	exit 1
+	Read-Host -Prompt "An error occurred. Press Enter to close"
 }
