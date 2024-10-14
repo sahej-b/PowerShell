@@ -1,4 +1,4 @@
-param([string]$text = "go to the party goober", [string]$title = "NOTE", [int]$Duration = 5000)
+param([string]$text = "go to the party goober", [string]$title = "", [int]$Duration = 5000)
 
 try {
 	Add-Type -AssemblyName System.Windows.Forms 
