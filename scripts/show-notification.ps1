@@ -1,23 +1,4 @@
-﻿<#
-.SYNOPSIS
-	Shows a notification
-.DESCRIPTION
-	This PowerShell script shows a toast-message notification for the Windows 10 Notification Center.
-.PARAMETER text
-	Specifies the text to show ('Hello World' by default)
-.PARAMETER title
-	Specifies the title to show ('NOTE' by default)
-.PARAMETER duration
-	Specifies the view duration in milliseconds (5000 by default)
-.EXAMPLE
-	PS> ./show-notification
-.LINK
-	https://github.com/fleschutz/PowerShell
-.NOTES
-	Author: Markus Fleschutz | License: CC0
-#>
-
-param([string]$text = "Hello World", [string]$title = "NOTE", [int]$Duration = 5000)
+param([string]$text = "go to the party goober", [string]$title = "NOTE", [int]$Duration = 5000)
 
 try {
 	Add-Type -AssemblyName System.Windows.Forms 
